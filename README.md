@@ -16,7 +16,8 @@ http://0.0.0.0:8000/docs
 
 ### run app
 
-```docker run -p 8000:8000 -v var:/app/var store-automation```
+```docker run --rm -p 8000:8000 -v var:/app/var store-automation```
 
 ### fill database by products and users
-```docker run -v var:/app/var store-automation /app/tools/db_filler.py```
+
+```docker run --rm -v var:/app/var store-automation /app/tools/db_filler.py```
