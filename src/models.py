@@ -1,8 +1,9 @@
 import datetime
 
-from sqlalchemy import Column, Integer, DateTime, Index
+from sqlalchemy import Column, Integer, DateTime, Index, Enum, ForeignKey, String
 from sqlalchemy.ext.declarative import declarative_base
 
+from src.constants import OrderStatus, UserRole
 
 Base = declarative_base()
 
@@ -25,9 +26,27 @@ class DictMethodsMixin:
             raise KeyError(key)
 
 
+class Product(Base, MainFieldsMixin, DictMethodsMixin):
+    __tablename__ = 'product'
+    name = Column(String)
+    price = Column(Integer)
+
+
+Index('product__id__index', Product.id)
+
+
 class User(Base, MainFieldsMixin, DictMethodsMixin):
     __tablename__ = 'user'
+    role = Column(Enum(UserRole))
 
 
-Index('posted_articles__id__index', User.id)
+Index('user__id__index', User.id)
 
+
+class Order(Base, MainFieldsMixin, DictMethodsMixin):
+    __tablename__ = 'order'
+    status = Column(Enum(OrderStatus))
+    product_id = Column(ForeignKey(Product.id))
+
+
+Index('order__id__index', Order.id)
