@@ -1,15 +1,17 @@
+### Docs
+
+Postman collection
+
+[![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/3dc235690e494fa57cc7)
+
+or swagger docs
+
+http://0.0.0.0:8000/docs
+
 ### build docker image
-
-
-run build
 
 ```docker build -t store-automation .```
 
-or
-
-```docker buildx build -t store-automation --platform=linux/amd64 .```
-
 ### run app
 
-```docker run -p 8000:8000 store-automation```
-
+```docker run -p 8000:8000 -v var:/app/var store-automation```
