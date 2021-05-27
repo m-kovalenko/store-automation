@@ -1,4 +1,4 @@
-This app - 
+This app - pre-employment test work.
 
 ### Docs
 
@@ -18,6 +18,6 @@ http://0.0.0.0:8000/docs
 
 ```docker run --rm -p 8000:8000 -v var:/app/var store-automation```
 
-### fill database by products and users
+### populate table with users and products
 
 ```docker run --rm -v var:/app/var store-automation /app/tools/db_filler.py```
